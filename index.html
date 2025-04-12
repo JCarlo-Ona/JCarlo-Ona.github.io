@@ -13,6 +13,20 @@
     h1 {
       color: #333;
     }
+    /* Add some basic styling for the blog post list */
+    .blog-posts {
+      margin-top: 2rem;
+    }
+    .blog-post-item {
+      margin-bottom: 1rem;
+    }
+    .blog-post-item a {
+      text-decoration: none;
+      color: #007bff; /* Example link color */
+    }
+    .blog-post-item small {
+      color: #6c757d; /* Example date color */
+    }
   </style>
 </head>
 <body>
@@ -26,9 +40,19 @@
   <ul>
     <li><a href="https://github.com/jcarlo-ona" target="_blank">My GitHub</a></li>
     <li><a href="#projects">Projects</a></li>
-  </ul>
+    <li><a href="#blog">Blog Posts</a></li> </ul>
 
   <h2 id="projects">Projects</h2>
   <p>Coming soon...</p>
+
+  <h2 id="blog">Blog Posts</h2>
+  <div class="blog-posts">
+    {% for post in site.posts %}
+      <div class="blog-post-item">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <small>Published on: {{ post.date | date: "%Y-%m-%d" }}</small>
+      </div>
+    {% endfor %}
+  </div>
 </body>
 </html>
